@@ -32,6 +32,14 @@ Styles For Font Awesome Icons
     font-size: 20px;
     color: green;
 }
+.remove-btn{
+    color: #c0392b;
+    font-size: 22px;
+    cursor: pointer;
+}
+.remove-btn:hover{
+    transform: scale(1.15);
+}
 
 /*************************************************************************************************** 
 Style For Input Sections  
@@ -52,5 +60,5 @@ button{
 Style For Error Messages Sections  
 ***************************************************************************************************/
 .alert-danger{
-    display: none;
+    /* display: none; */
 }
