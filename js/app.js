@@ -80,7 +80,8 @@ document.getElementById('error-notification').addEventListener('click',function(
     setDefaultValue ('clothes-cost');
     setDefaultValue ('income');
     setDefaultValue ('savings-rate');
-    document.getElementById('balance').innerText = getInputValue('income');
+    document.getElementById('total-expense').innerText = '0.00';
+    document.getElementById('balance').innerText = getInputValue('income');      
     document.getElementById('savings-amount').innerText = '0.00';
     document.getElementById('remaining-balance').innerText = '0.00';
 })
