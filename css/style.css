@@ -78,6 +78,10 @@ button{
 /*************************************************************************************************** 
 Style For Error Messages Sections  
 ***************************************************************************************************/
+#notification-title{
+    padding-left: 5px;
+    border-left: 5px solid #0D6EFD;
+}
 .error-message-1,
 .error-message-2{
     display: none;

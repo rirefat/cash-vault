@@ -15,14 +15,14 @@ document.getElementById('calculate-cost').addEventListener('click',function(){
         sufficientBalance();
         onGreenAlert();
         oFFerrorNotification();
+        notificationWarning(false);
     }
     else{
         insufficientBalance();
         oFFGreenAlert();
         balanceError('balance');
         balanceError('remaining-balance');
-        // document.getElementById('balance').innerText = '!!';
-        // document.getElementById('remaining-balance').innerText = '!!';
+        notificationWarning(true);
     }
     
 })
@@ -41,12 +41,14 @@ document.getElementById('save-btn').addEventListener('click', function(){
         document.getElementById('remaining-balance').innerText = remainingBalance.toFixed(2);
         sufficientBalance();
         onGreenAlert();
+        oFFerrorNotification();
+        notificationWarning(false);
     }
     else{
         balanceError('remaining-balance');
-        // document.getElementById('remaining-balance').innerText = '!!';
         insufficientBalance();
         oFFGreenAlert();
+        notificationWarning(true);
     }
     
 })
@@ -59,9 +61,10 @@ function getInputValue(purpose){
         return val;
     }
     else{
+        notificationWarning(true);
         oNerrorNotification();
         oFFGreenAlert();
-        disabledButton();
+        disabledButton();        
     }    
 }
 
@@ -71,6 +74,7 @@ document.getElementById('error-notification').addEventListener('click',function(
     oFFerrorNotification();
     sufficientBalance();
     onGreenAlert();
+    notificationWarning(false);
     setDefaultValue ('food-cost');
     setDefaultValue ('rent-cost');
     setDefaultValue ('clothes-cost');
@@ -120,4 +124,12 @@ function insufficientBalance(){
 }
 function balanceError(type){
     document.getElementById(type).innerText = '!!';
+}
+function notificationWarning(isOn){    
+    if(isOn == true){
+        document.getElementById('notification-title').style.borderColor='red';
+    }
+    else{
+        document.getElementById('notification-title').style.borderColor='#0D6EFD';
+    }
 }
