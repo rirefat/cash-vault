@@ -60,5 +60,5 @@ button{
 Style For Error Messages Sections  
 ***************************************************************************************************/
 .alert-danger{
-    /* display: none; */
+    display: none;
 }

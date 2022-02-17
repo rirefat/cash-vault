@@ -1,28 +1,52 @@
 // Total Expense Calculation
 document.getElementById('calculate-cost').addEventListener('click',function(){
-    let foodCost = parseFloat(document.getElementById('food-cost').value);
-    let rentCost = parseFloat(document.getElementById('rent-cost').value);
-    let clothesCost = parseFloat(document.getElementById('clothes-cost').value);
+    let foodCost = getInputValue('food-cost');
+    let rentCost = getInputValue('rent-cost');
+    let clothesCost = getInputValue('clothes-cost');
     let totalCost = foodCost + rentCost + clothesCost;
-    console.log(totalCost);
     document.getElementById('total-expense').innerText = totalCost.toFixed(2);
-
-    let totalIncome = parseFloat(document.getElementById('income').value);
-    // console.log(totalIncome);
+    let totalIncome = getInputValue('income');
     let balance = totalIncome - totalCost;
     document.getElementById('balance').innerText = balance.toFixed(2);
 })
 
 // Savings Calculation
 document.getElementById('save-btn').addEventListener('click', function(){
-    let totalIncome = parseFloat(document.getElementById('income').value);
-    // console.log(totalIncome)
-    let savingsRate = parseFloat(document.getElementById('savings-rate').value);
-    // console.log(savingsRate)
+    let totalIncome = getInputValue('income');
+    let savingsRate = getInputValue('savings-rate');
     let savingsAmount = totalIncome * (savingsRate/100);
     document.getElementById('savings-amount').innerText = savingsAmount.toFixed(2);
     let previousBalance = parseFloat(document.getElementById('balance').innerText);
     let remainingBalance = previousBalance - savingsAmount;
-    // console.log(remainingBalance)
     document.getElementById('remaining-balance').innerText = remainingBalance.toFixed(2);
 })
+
+// Functions for getting Input values with handling errors
+function getInputValue(purpose){
+    let cost = parseFloat(document.getElementById(purpose).value);
+    if(cost >= 0){
+        return cost;
+    }
+    else{
+        document.getElementById('error-notification').style.display='block';
+        document.getElementById('no-alert').style.display='none';
+    }    
+}
+
+// Function for removing error message
+document.getElementById('error-notification').addEventListener('click',function(){
+    document.getElementById('error-notification').style.display='none';
+    document.getElementById('no-alert').style.display='block';
+    setDefaultValue ('food-cost');
+    setDefaultValue ('rent-cost');
+    setDefaultValue ('clothes-cost');
+    setDefaultValue ('income');
+    setDefaultValue ('savings-rate');
+    document.getElementById('balance').innerText = getInputValue('income');
+    document.getElementById('savings-amount').innerText = '0.00';
+    document.getElementById('remaining-balance').innerText = '0.00';
+})
+// Function for setting default input value
+function setDefaultValue (purpose){
+    document.getElementById(purpose).value = 0.00;
+}
