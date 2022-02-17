@@ -42,7 +42,7 @@
                         <div class="row mb-3 justify-content-center">
                           <label for="colFormLabel" class="col-sm-2 col-form-label text-sm-end fw-bold">Income:</label>
                           <div class="col-sm-6">
-                            <input type="number" class="form-control shadow-sm" id="colFormLabel" value="10000">
+                            <input type="number" class="form-control shadow-sm" id="income" value="10000">
                           </div>
                         </div>
                       </div>
@@ -53,29 +53,29 @@
                         <div class="row mb-3 justify-content-center">
                           <label for="colFormLabel" class="col-sm-2 col-form-label text-sm-end fw-bold">Food:</label>
                           <div class="col-sm-6">
-                            <input type="number" class="form-control shadow-sm" id="colFormLabel" >
+                            <input type="number" class="form-control shadow-sm" id="food-cost" value="0">
                           </div>
                         </div>
                         <div class="row mb-3 justify-content-center">
                           <label for="colFormLabel" class="col-sm-2 col-form-label text-sm-end fw-bold">Rent:</label>
                           <div class="col-sm-6">
-                            <input type="number" class="form-control shadow-sm" id="colFormLabel" >
+                            <input type="number" class="form-control shadow-sm" id="rent-cost" value="0">
                           </div>
                         </div>
                         <div class="row mb-3 justify-content-center">
                           <label for="colFormLabel" class="col-sm-2 col-form-label text-sm-end fw-bold">Clothes:</label>
                           <div class="col-sm-6">
-                            <input type="number" class="form-control shadow-sm" id="colFormLabel" >
+                            <input type="number" class="form-control shadow-sm" id="clothes-cost" value="0">
                           </div>
                         </div>
                       </div>
                       <!-- Expense Summery Section -->
                       <div class="d-flex justify-content-center mb-4 mt-2">
-                        <button type="submit" class="btn btn-primary shadow-lg px-5 py-2 fs-5">Calculate</button>
+                        <button type="submit" class="btn btn-primary shadow-lg px-5 py-2 fs-5" id="calculate-cost">Calculate</button>
                       </div>
                       <div class="mb-4">
-                        <h4 class="text-center mb-3">Total Expense: <i class="fas fa-dollar-sign"></i><span> 0.00</span></h4>
-                        <h4 class="text-center mb-3">Balance: <i class="fas fa-dollar-sign"></i><span> 0.00</span></h4>
+                        <h4 class="text-center mb-3">Total Expense: <i class="fas fa-dollar-sign"></i> <span id="total-expense"> 0.00</span></h4>
+                        <h4 class="text-center mb-3">Balance: <i class="fas fa-dollar-sign"></i> <span id="balance"> 10000</span></h4>
                       </div>
 
                       <!-- Savings Section -->
@@ -96,7 +96,7 @@
                         </div>                      
                       </div>
                       <h4 class="text-center mb-3">Savings Amount: <i class="fas fa-dollar-sign"></i><span> 0.00</span></h4>
-                      <h4 class="text-center mb-3">Remaining Balance: <i class="fas fa-dollar-sign"></i><span> 0.00</span></h4>
+                      <h4 class="text-center mb-3">Remaining Balance: <i class="fas fa-dollar-sign"></i><span> 10000</span></h4>
                     </div>
                   </div>
                 </div>                
