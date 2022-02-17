@@ -7,9 +7,22 @@ document.getElementById('calculate-cost').addEventListener('click',function(){
     document.getElementById('total-expense').innerText = totalCost.toFixed(2);
     let totalIncome = getInputValue('income');
     let balance = totalIncome - totalCost;
-    document.getElementById('balance').innerText = balance.toFixed(2);
-    document.getElementById('remaining-balance').innerText = balance.toFixed(2);
-    enabledButton();
+
+    if(balance >0){
+        document.getElementById('balance').innerText = balance.toFixed(2);
+        document.getElementById('remaining-balance').innerText = balance.toFixed(2);
+        enabledButton();
+        sufficientBalance();
+        onGreenAlert();
+        oFFerrorNotification();
+    }
+    else{
+        insufficientBalance();
+        oFFGreenAlert();
+        document.getElementById('balance').innerText = '!!';
+        document.getElementById('remaining-balance').innerText = '!!';
+    }
+    
 })
 
 
@@ -53,6 +66,7 @@ function getInputValue(purpose){
 // Removing error message
 document.getElementById('error-notification').addEventListener('click',function(){
     oFFerrorNotification();
+    sufficientBalance();
     onGreenAlert();
     setDefaultValue ('food-cost');
     setDefaultValue ('rent-cost');
