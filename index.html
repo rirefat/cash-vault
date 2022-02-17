@@ -28,7 +28,13 @@
                   <div class="card rounded-3 shadow-lg">
                     <img src="images/image.jpg" class="card-img-top" alt="...">                    
                   </div>
-                  <div class="alert alert-danger my-5" role="alert">
+                  <div class="notificatins mt-5 mb-2">
+                    <h4 class="">Notification Panel:</h4>
+                    <div class="alert alert-success" role="alert">
+                        <i class="fas fa-check-circle"></i> Well Done! Everything of your account looks Good.
+                      </div>
+                  </div>
+                  <div class="alert alert-danger" role="alert">
                     <i class="fas fa-exclamation-triangle"></i> Invalid! Please Give Proper Amount.
                   </div>
                 </div>
@@ -84,19 +90,19 @@
                             <div class="row mb-3 align-items-center mx-auto">
                                 <label for="colFormLabel" class="col col-sm-3 col-form-label text-sm-end fw-bold">Save:</label>
                                 <div class="col col-sm-3">
-                                  <input type="number" class="form-control shadow-sm" id="colFormLabel"> 
+                                  <input type="number" class="form-control shadow-sm" id="savings-rate"> 
                                 </div>
                                 <div class="col col-sm-1">
                                     <i class="fas fa-percent"></i>
                                 </div>
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary px-4 px-sm-5 mt-2 mx-auto fs-6 shadow-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary px-4 px-sm-5 mt-2 mx-auto fs-6 shadow-lg" id="save-btn">Save</button>
                                 </div>   
                             </div> 
                         </div>                      
                       </div>
-                      <h4 class="text-center mb-3">Savings Amount: <i class="fas fa-dollar-sign"></i><span> 0.00</span></h4>
-                      <h4 class="text-center mb-3">Remaining Balance: <i class="fas fa-dollar-sign"></i><span> 10000</span></h4>
+                      <h4 class="text-center mb-3">Savings Amount: <i class="fas fa-dollar-sign"></i> <span id="savings-amount"> 0.00</span></h4>
+                      <h4 class="text-center mb-3">Remaining Balance: <i class="fas fa-dollar-sign"></i> <span id="remaining-balance"> 10000</span></h4>
                     </div>
                   </div>
                 </div>                
