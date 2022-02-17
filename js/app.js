@@ -8,8 +8,8 @@ document.getElementById('calculate-cost').addEventListener('click',function(){
     let totalIncome = getInputValue('income');
     let balance = totalIncome - totalCost;
     document.getElementById('balance').innerText = balance.toFixed(2);
-
-    document.getElementById('save-btn').removeAttribute('disabled');
+    document.getElementById('remaining-balance').innerText = balance.toFixed(2);
+    enabledButton();
 })
 
 
@@ -24,12 +24,13 @@ document.getElementById('save-btn').addEventListener('click', function(){
 
     if(remainingBalance > 0){
         document.getElementById('remaining-balance').innerText = remainingBalance.toFixed(2);
-        document.getElementById('insufficient-balance').style.display='none';
-        document.getElementById('no-alert').style.display='block';
+        sufficientBalance();
+        onGreenAlert();
     }
     else{
-        document.getElementById('insufficient-balance').style.display='block';
-        document.getElementById('no-alert').style.display='none';
+        document.getElementById('remaining-balance').innerText = '!!';
+        insufficientBalance();
+        oFFGreenAlert();
     }
     
 })
@@ -42,16 +43,17 @@ function getInputValue(purpose){
         return cost;
     }
     else{
-        document.getElementById('error-notification').style.display='block';
-        document.getElementById('no-alert').style.display='none';
+        oNerrorNotification();
+        oFFGreenAlert();
+        disabledButton();
     }    
 }
 
 
 // Removing error message
 document.getElementById('error-notification').addEventListener('click',function(){
-    document.getElementById('error-notification').style.display='none';
-    document.getElementById('no-alert').style.display='block';
+    oFFerrorNotification();
+    onGreenAlert();
     setDefaultValue ('food-cost');
     setDefaultValue ('rent-cost');
     setDefaultValue ('clothes-cost');
@@ -60,12 +62,42 @@ document.getElementById('error-notification').addEventListener('click',function(
     document.getElementById('balance').innerText = getInputValue('income');
     document.getElementById('savings-amount').innerText = '0.00';
     document.getElementById('remaining-balance').innerText = '0.00';
-
-    document.getElementById('save-btn').setAttribute('disabled');
 })
 
 
 // Function for setting default input value
 function setDefaultValue (purpose){
     document.getElementById(purpose).value = 0.00;
+}
+
+
+// Functions for enabling/disabling save button
+function disabledButton(){
+    document.getElementById('save-btn').setAttribute('disabled');
+}
+function enabledButton(){
+    document.getElementById('save-btn').removeAttribute('disabled');
+}
+
+
+// Functions for Notifications and error messages
+function oNerrorNotification(){
+    document.getElementById('error-notification').style.display='block';
+}
+function oFFerrorNotification(){
+    document.getElementById('error-notification').style.display='none';
+}
+
+function onGreenAlert(){
+    document.getElementById('no-alert').style.display='block';
+}
+function oFFGreenAlert(){
+    document.getElementById('no-alert').style.display='none';
+}
+
+function sufficientBalance(){
+    document.getElementById('insufficient-balance').style.display='none';
+}
+function insufficientBalance(){
+    document.getElementById('insufficient-balance').style.display='block';
 }
