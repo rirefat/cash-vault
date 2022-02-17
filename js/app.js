@@ -8,7 +8,7 @@ document.getElementById('calculate-cost').addEventListener('click',function(){
     let totalIncome = getInputValue('income');
     let balance = totalIncome - totalCost;
 
-    if(balance >0){
+    if(balance > 0){
         document.getElementById('balance').innerText = balance.toFixed(2);
         document.getElementById('remaining-balance').innerText = balance.toFixed(2);
         enabledButton();
@@ -19,8 +19,10 @@ document.getElementById('calculate-cost').addEventListener('click',function(){
     else{
         insufficientBalance();
         oFFGreenAlert();
-        document.getElementById('balance').innerText = '!!';
-        document.getElementById('remaining-balance').innerText = '!!';
+        balanceError('balance');
+        balanceError('remaining-balance');
+        // document.getElementById('balance').innerText = '!!';
+        // document.getElementById('remaining-balance').innerText = '!!';
     }
     
 })
@@ -41,7 +43,8 @@ document.getElementById('save-btn').addEventListener('click', function(){
         onGreenAlert();
     }
     else{
-        document.getElementById('remaining-balance').innerText = '!!';
+        balanceError('remaining-balance');
+        // document.getElementById('remaining-balance').innerText = '!!';
         insufficientBalance();
         oFFGreenAlert();
     }
@@ -51,9 +54,9 @@ document.getElementById('save-btn').addEventListener('click', function(){
 
 // Functions for getting Input values with handling errors
 function getInputValue(purpose){
-    let cost = parseFloat(document.getElementById(purpose).value);
-    if(cost >= 0){
-        return cost;
+    let val = parseFloat(document.getElementById(purpose).value);
+    if(val >= 0){
+        return val;
     }
     else{
         oNerrorNotification();
@@ -114,4 +117,7 @@ function sufficientBalance(){
 }
 function insufficientBalance(){
     document.getElementById('insufficient-balance').style.display='block';
+}
+function balanceError(type){
+    document.getElementById(type).innerText = '!!';
 }
