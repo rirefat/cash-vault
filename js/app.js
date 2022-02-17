@@ -8,7 +8,10 @@ document.getElementById('calculate-cost').addEventListener('click',function(){
     let totalIncome = getInputValue('income');
     let balance = totalIncome - totalCost;
     document.getElementById('balance').innerText = balance.toFixed(2);
+
+    document.getElementById('save-btn').removeAttribute('disabled');
 })
+
 
 // Savings Calculation
 document.getElementById('save-btn').addEventListener('click', function(){
@@ -18,8 +21,19 @@ document.getElementById('save-btn').addEventListener('click', function(){
     document.getElementById('savings-amount').innerText = savingsAmount.toFixed(2);
     let previousBalance = parseFloat(document.getElementById('balance').innerText);
     let remainingBalance = previousBalance - savingsAmount;
-    document.getElementById('remaining-balance').innerText = remainingBalance.toFixed(2);
+
+    if(remainingBalance > 0){
+        document.getElementById('remaining-balance').innerText = remainingBalance.toFixed(2);
+        document.getElementById('insufficient-balance').style.display='none';
+        document.getElementById('no-alert').style.display='block';
+    }
+    else{
+        document.getElementById('insufficient-balance').style.display='block';
+        document.getElementById('no-alert').style.display='none';
+    }
+    
 })
+
 
 // Functions for getting Input values with handling errors
 function getInputValue(purpose){
@@ -33,7 +47,8 @@ function getInputValue(purpose){
     }    
 }
 
-// Function for removing error message
+
+// Removing error message
 document.getElementById('error-notification').addEventListener('click',function(){
     document.getElementById('error-notification').style.display='none';
     document.getElementById('no-alert').style.display='block';
@@ -45,7 +60,11 @@ document.getElementById('error-notification').addEventListener('click',function(
     document.getElementById('balance').innerText = getInputValue('income');
     document.getElementById('savings-amount').innerText = '0.00';
     document.getElementById('remaining-balance').innerText = '0.00';
+
+    document.getElementById('save-btn').setAttribute('disabled');
 })
+
+
 // Function for setting default input value
 function setDefaultValue (purpose){
     document.getElementById(purpose).value = 0.00;
